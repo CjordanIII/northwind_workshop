@@ -1,7 +1,7 @@
 import { dropdown } from "./builders/dropdownBuilder.js";
 import { table } from "./builders/table.js";
 import { catagoriesArr, catogorieDropdown } from "./services/products.js";
-const byCatgory = document.querySelector("#dropdown");
+const byCatgory = document.querySelector("#category_drop_down");
 const tablehtml = document.querySelector("#table");
 // builds drop down
 const intoDropdown = async () => {

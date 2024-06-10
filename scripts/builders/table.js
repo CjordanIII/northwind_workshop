@@ -9,16 +9,14 @@ const table = (parent, data) => {
   const pID = rowdata.insertCell();
   const pname = rowdata.insertCell();
   const pPrice = rowdata.insertCell();
-  const pUnit = rowdata.insertCell();
-  const pSupplier = rowdata.insertCell();
-  const pIsDiscontinued = rowdata.insertCell();
+  const pSeeMore = rowdata.insertCell();
+
   // assigning tittles
   pID.innerText = "product Id";
   pname.innerText = "name";
   pPrice.innerText = "price";
-  pUnit.innerText = "Units";
-  pSupplier.innerText = "supplier";
-  pIsDiscontinued.innerText = "discontinued";
+  pSeeMore.innerText = "See more";
+
   // createomg tbody
   const tbody = parent.createTBody();
 
@@ -34,18 +32,13 @@ const table = (parent, data) => {
     pName.innerText = item.productName;
     let pU = tdata.insertCell();
     pU.innerText = item.unitPrice;
-    let punitsLeft = tdata.insertCell();
-    punitsLeft.innerText = item.unitsInStock;
-    let psupplier = tdata.insertCell();
-    psupplier.innerText = item.supplier;
-    let isDiscontinued = tdata.insertCell();
-    // is discontinued?
-    if (item.discontinued) {
-      isDiscontinued.innerText = "yes";
-    } else {
-      isDiscontinued.innerText = "no";
-    }
+    let seemore = tdata.insertCell();
+    const link = document.createElement("a");
+    link.href = "#";
+    link.innerText = "seemore";
+    seemore.appendChild(link);
   });
+  console.log(parent);
 };
 
 export { table };
