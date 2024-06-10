@@ -16,6 +16,5 @@ const getProdects = async (id) => {
     "discontinued",
   ];
   table2(tableHTML, [products], arr);
-  console.log(products);
 };
 getProdects(id);

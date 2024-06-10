@@ -52,8 +52,7 @@ const table2 = (parent, data, arr) => {
   const tbody = parent.createTBody();
 
   //  builing body over arr
-  data.forEach((item, index) => {
-    console.log(item);
+  data.forEach((item) => {
     //  incert row into body
     const tdata = tbody.insertRow();
     // incert cell into row
