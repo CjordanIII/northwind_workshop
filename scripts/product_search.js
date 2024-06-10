@@ -1,28 +1,25 @@
 import { dropdown } from "./builders/dropdownBuilder.js";
-import { table } from "./builders/table.js";
-import { catagoriesArr, catogorieDropdown } from "./services/products.js";
+import { intoDropdown } from "./helpers/dorpdown.js";
 const byCatgory = document.querySelector("#category_drop_down");
 const tablehtml = document.querySelector("#table");
+const searchByDropDown = document.querySelector("#search_by");
 // builds drop down
-const intoDropdown = async () => {
-  try {
-    const catagories = await catogorieDropdown();
+const searchByDp = async () => {
+  const dpData = [
+    { categoryId: 1, name: "Select one..." },
+    { categoryId: 2, name: "Search by category" },
+    { categoryId: 3, name: "View all" },
+  ];
+  dropdown(searchByDropDown, "search_by_db", dpData);
+  document.querySelector("#search_by_db").addEventListener("change", (w) => {
+    // if catagorys true show
+    if (w.target.value == dpData[1].categoryId) {
+      // clear out before start might be data there
+      byCatgory.innerText = "";
+      tablehtml.innerText = "";
 
-    // dropdown builder
-    dropdown(byCatgory, "catagories", catagories);
-    // search by id
-    const catagoriesDropdown = document.querySelector("#catagories");
-    catagoriesDropdown.addEventListener("change", (e) => {
-      // console.log(e.target.value);
-      const responciveCatagories = async () => {
-        const responce = await catagoriesArr(e.target.value);
-
-        table(tablehtml, responce);
-      };
-      responciveCatagories();
-    });
-  } catch (error) {
-    console.log(error);
-  }
+      intoDropdown(byCatgory, tablehtml);
+    }
+  });
 };
-intoDropdown();
+searchByDp();
