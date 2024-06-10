@@ -1,5 +1,6 @@
 import { dropdown } from "./builders/dropdownBuilder.js";
 import { intoDropdown } from "./helpers/dorpdown.js";
+import { viewAll } from "./helpers/viewAll.js";
 const byCatgory = document.querySelector("#category_drop_down");
 const tablehtml = document.querySelector("#table");
 const searchByDropDown = document.querySelector("#search_by");
@@ -17,9 +18,16 @@ const searchByDp = async () => {
       // clear out before start might be data there
       byCatgory.innerText = "";
       tablehtml.innerText = "";
-
       intoDropdown(byCatgory, tablehtml);
+    } else if (w.target.value == dpData[2].categoryId) {
+      byCatgory.innerText = "";
+      tablehtml.innerText = "";
+      viewAll(tablehtml);
+    } else {
+      byCatgory.innerText = "";
+      tablehtml.innerText = "";
     }
   });
 };
+
 searchByDp();

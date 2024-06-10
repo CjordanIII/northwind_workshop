@@ -20,4 +20,14 @@ const catagoriesArr = async (id) => {
     return error;
   }
 };
-export { catagoriesArr, catogorieDropdown };
+
+const productsArr = async () => {
+  try {
+    let res = await fetch(`${baseRoute}/api/products`);
+    res = res.json();
+    return res;
+  } catch (error) {
+    return error;
+  }
+};
+export { catagoriesArr, catogorieDropdown, productsArr };
