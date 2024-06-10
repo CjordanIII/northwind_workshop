@@ -1,9 +1,11 @@
 import { dropdown } from "./builders/dropdownBuilder.js";
 import { intoDropdown } from "./helpers/dorpdown.js";
 import { viewAll } from "./helpers/viewAll.js";
+// dom search
 const byCatgory = document.querySelector("#category_drop_down");
 const tablehtml = document.querySelector("#table");
 const searchByDropDown = document.querySelector("#search_by");
+
 // builds drop down
 const searchByDp = async () => {
   const dpData = [

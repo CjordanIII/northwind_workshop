@@ -1,5 +1,4 @@
-const baseRoute = "http://localhost:8081";
-
+import { baseRoute } from "../constants/baseRoute.js";
 const catogorieDropdown = async () => {
   try {
     let res = await fetch(`${baseRoute}/api/categories`);
@@ -30,4 +29,14 @@ const productsArr = async () => {
     return error;
   }
 };
-export { catagoriesArr, catogorieDropdown, productsArr };
+
+const productsArrAll = async (id) => {
+  try {
+    let res = await fetch(`${baseRoute}/api/products/${id}`);
+    res = res.json();
+    return res;
+  } catch (error) {
+    return error;
+  }
+};
+export { catagoriesArr, catogorieDropdown, productsArr, productsArrAll };

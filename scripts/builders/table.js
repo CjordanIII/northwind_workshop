@@ -1,4 +1,4 @@
-const table = (parent, data) => {
+const table = (parent, data, arr) => {
   // clearing out data
   parent.innerText = "";
   // createing thead
@@ -6,17 +6,11 @@ const table = (parent, data) => {
   // inserting row inside thead
   const rowdata = row.insertRow();
   // inserting cell in thead
-  const pID = rowdata.insertCell();
-  const pname = rowdata.insertCell();
-  const pPrice = rowdata.insertCell();
-  const pSeeMore = rowdata.insertCell();
 
-  // assigning tittles
-  pID.innerText = "product Id";
-  pname.innerText = "name";
-  pPrice.innerText = "price";
-  pSeeMore.innerText = "See more";
-
+  arr.forEach((arrData) => {
+    let cell = rowdata.insertCell();
+    cell.innerText = arrData;
+  });
   // createomg tbody
   const tbody = parent.createTBody();
 
@@ -34,11 +28,60 @@ const table = (parent, data) => {
     pU.innerText = item.unitPrice;
     let seemore = tdata.insertCell();
     const link = document.createElement("a");
-    link.href = "#";
+
+    link.href = `/product_details.html?id=${item.productId}`;
     link.innerText = "seemore";
     seemore.appendChild(link);
   });
-  console.log(parent);
 };
 
-export { table };
+const table2 = (parent, data, arr) => {
+  // clearing out data
+  parent.innerText = "";
+  // createing thead
+  const row = parent.createTHead();
+  // inserting row inside thead
+  const rowdata = row.insertRow();
+  // inserting cell in thead
+
+  arr.forEach((arrData) => {
+    let cell = rowdata.insertCell();
+    cell.innerText = arrData;
+  });
+  // createomg tbody
+  const tbody = parent.createTBody();
+
+  //  builing body over arr
+  data.forEach((item, index) => {
+    console.log(item);
+    //  incert row into body
+    const tdata = tbody.insertRow();
+    // incert cell into row
+    const catId = tdata.insertCell();
+    catId.innerText = item.categoryId;
+    // =====
+    const prodId = tdata.insertCell();
+    prodId.innerText = item.productId;
+    // =====
+    const prodName = tdata.insertCell();
+    prodName.innerText = item.productName;
+    // =====
+    const prodsuppy = tdata.insertCell();
+    prodsuppy.innerText = item.supplier;
+    // ====
+    const pPrice = tdata.insertCell();
+    pPrice.innerText = item.unitPrice;
+    // ====
+    const pUnits = tdata.insertCell();
+    pUnits.innerText = item.unitsInStock;
+    // ====
+    const pDis = tdata.insertCell();
+    if (item.discontinued) {
+      pDis.innerText = "yes";
+    } else {
+      pDis.innerText = "no";
+    }
+  });
+};
+
+export { table, table2 };
